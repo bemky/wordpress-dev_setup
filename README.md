@@ -1,16 +1,13 @@
 # Wordpress Development Setup
 
 **Context**   
-macOS 10.13+  
+macOS 10.13+  
 Homebrew 1.5.10+  
 PHP 7.2+  
 MySQL 5.7+  
 Media Temple Grid: Shared Hosting
 
-### Environment Setup
-`brew install php`  
-`brew install mysql`
-
+## Setup
 ### Production Setup
 `ssh yourdomain.com@yourdomain.com`
 ```shell
@@ -47,6 +44,8 @@ git update-server-info
 ```
 
 ### Development Setup
+`brew install php`  
+`brew install mysql`
 `git clone ssh://yourdomain.com@yourdomain.com/~/domains/yourdomain.com/repo.git yourdomain.com`
 
 ### Database Setup
@@ -68,7 +67,7 @@ rm -rf wordpress
 Start php server `php -S localhost:9000`  
 Go to http://localhost:9000 to finish setup
 
-### Deploy
+## Deploy
 Using git hooks setup earlier in this guide, simply pushing repo to origin deploys to production.
 `git push`
 
