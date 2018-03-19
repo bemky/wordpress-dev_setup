@@ -124,6 +124,7 @@ rm database_name.sql
 exit
 ```
 
+Checkout https://underscores.me to build a blank wordpress theme
 
 ###### References
 http://joemaller.com/990/a-web-focused-git-workflow/  
