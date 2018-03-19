@@ -11,14 +11,14 @@ Media Temple Grid: Shared Hosting
 ### Production Setup
 `ssh yourdomain.com@yourdomain.com`
 ```shell
-yourdomain.com:cd ~/domains/yourdomain.com/html
-yourdomain.com:git init
-yourdomain.com:cd ~/domains/yourdomain.com/repo
-yourdomain.com:git --bare init
-yourdomain.com:cd ~/domains/yourdomain.com/html
-yourdomain.com:git remote add hub ~/domains/yourdomain.com/repo.git
-yourdomain.com:touch ~/domains/yourdomain.com/html/.git/hooks/post-commit
-yourdomain.com:vim ~/domains/yourdomain.com/html/.git/hooks/post-commit
+cd ~/domains/yourdomain.com/html
+git init
+cd ~/domains/yourdomain.com/repo
+git --bare init
+cd ~/domains/yourdomain.com/html
+git remote add hub ~/domains/yourdomain.com/repo.git
+touch ~/domains/yourdomain.com/html/.git/hooks/post-commit
+vim ~/domains/yourdomain.com/html/.git/hooks/post-commit
 ```
 ```shell
 #!/bin/bash
@@ -29,8 +29,8 @@ echo
 git push hub
 ```
 ```shell
-yourdomain.com:touch ~/domains/yourdomain.com/repo.git/hoods/post-update
-yourdomain.com:vim ~/domains/yourdomain.com/repo.git/hooks/post-update
+touch ~/domains/yourdomain.com/repo.git/hoods/post-update
+vim ~/domains/yourdomain.com/repo.git/hooks/post-update
 ```
 ```shell
 #!/bin/bash
