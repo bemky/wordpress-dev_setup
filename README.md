@@ -13,7 +13,7 @@ Media Temple Grid: Shared Hosting
 
 ### Production Setup
 `ssh yourdomain.com@yourdomain.com`
-```
+```shell
 yourdomain.com:cd ~/domains/yourdomain.com/html
 yourdomain.com:git init
 yourdomain.com:cd ~/domains/yourdomain.com/repo
@@ -23,7 +23,7 @@ yourdomain.com:git remote add hub ~/domains/yourdomain.com/repo.git
 yourdomain.com:touch ~/domains/yourdomain.com/html/.git/hooks/post-commit
 yourdomain.com:vim ~/domains/yourdomain.com/html/.git/hooks/post-commit
 ```
-```
+```shell
 #!/bin/bash
 echo
 echo "**** pushing changes to Hub"
@@ -31,11 +31,11 @@ echo
 
 git push hub
 ```
-```
+```shell
 yourdomain.com:touch ~/domains/yourdomain.com/repo.git/hoods/post-update
 yourdomain.com:vim ~/domains/yourdomain.com/repo.git/hooks/post-update
 ```
-```
+```shell
 #!/bin/bash
 echo
 echo "**** Deploying master to /html"
@@ -51,14 +51,14 @@ git update-server-info
 
 ### Database Setup
 `mysql -u root`  
-```
+```shell
 CREATE DATABASE YourWPDatabaseName;
 CREATE USER 'new_user'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON YourWPDatabaseName.* TO 'username'@'localhost';
 ```
 
 ### Wordpress Setup
-```
+```shell
 curl -O https://wordpress.org/latest.zip
 unzip latest.zip
 mv wordpress/* ./
@@ -73,7 +73,7 @@ Using git hooks setup earlier in this guide, simply pushing repo to origin deplo
 `git push`
 
 ### Database Dump: Production => Development
-```
+```shell
 #SSH into server
 ssh yourdomain.com@yourdomain.com
 
@@ -87,7 +87,7 @@ scp yourdomain.com@yourdomain.com:~/database_name.sql tmp/database_name.sql
 mysql -u longviewihn -p longviewihn < db148038_longviewihn_wp.sql
 rm tmp/db148038_longviewihn_wp.sql
 
-#Fix url differences
+#Fix root url
 mysql -u longviewihn -p longviewihn
 UPDATE wp_options SET option_value = 'http://localhost:9000' WHERE option_name = 'siteurl' OR option_name = 'home';
 \q
@@ -98,17 +98,18 @@ rm database_name.sql
 ```
 
 ### Database Dump: Development => Production
-```
+```shell
 #Dump database
 mysqldump --add-drop-table -u user -p database_name > tmp/database_name.sql
 
 #Upload database dump
 scp tmp/database_name.sql yourdomain.com@yourdomain.com:~/database_name.sql
 
-#Import database dujmp
+#Import database dump
 ssh yourdomain.com@yourdomain.com
 mysql -h host -u user -p database_name < database_name.sql
 
+#Fix root url
 mysql -h host -u user -p database_name
 UPDATE wp_options SET option_value = 'http://yourdomain.com' WHERE option_name = 'siteurl' OR option_name = 'home';
 \q
