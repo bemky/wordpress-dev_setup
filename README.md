@@ -63,6 +63,12 @@ unzip latest.zip
 mv wordpress/* ./
 rm latest.zip
 rm -rf wordpress
+touch .gitignore
+vim .gitignore
+```
+```bash
+# path/to/code/.gitignore
+wp-config.php
 ```
 Start php server `php -S localhost:9000`  
 Go to http://localhost:9000 to finish setup
