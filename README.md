@@ -45,7 +45,7 @@ git update-server-info
 
 ### Development Setup
 `brew install php`  
-`brew install mysql`
+`brew install mysql`  
 `git clone ssh://yourdomain.com@yourdomain.com/~/domains/yourdomain.com/repo.git yourdomain.com`
 
 ### Database Setup
